@@ -1,0 +1,43 @@
+<style>
+
+	.form_button{
+		background-color:#337ab7;
+		color:white;
+	}
+
+	.form_button:hover{
+		background-color:#286090;
+	}
+
+</style>
+
+<section>
+
+	<h2>New book</h2>
+
+</section>
+
+<div class = "index-form">
+
+	<%= form_for(book) do |f| %>
+
+		<div class = "field">
+			<%= f.label :title, :style => 'display:block;' %>
+			<%= f.text_field :title, :class => 'col-xs-12 book_title',
+				:style => 'display:block; margin-bottom:10px;' %>
+		</div>
+
+		<div class = "field">
+			<%= f.label :opinion, :style => 'display:block;' %>
+			<%= f.text_area :body, :class => 'col-xs-12 book_body',
+				:style => 'display:block; margin-bottom:10px;' %>
+		</div>
+
+		<div class = "actions">
+			<%= f.submit 'Create Book', :class => 'col-xs-12 form_button',
+				:style => 'border:none; border-radius:3px; padding:5px 0;' %>
+		</div>
+
+	<% end %>
+
+</div>

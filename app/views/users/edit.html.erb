@@ -1,0 +1,59 @@
+<div class = "container">
+
+	<div class = "row">
+
+		<div class = "col-md-10">
+
+			<section>
+
+				<h2>User info</h2>
+
+				<div class = "index-form">
+
+					<%= form_for(@user) do |f| %>
+						<% if @user.errors.any? %>
+
+							<section class = "alert alert-warning" style = "border:none; background-color:white;">
+
+					      		<h3 class = "error-headline" style = "margin-top:0; color:red;">
+					      			<%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:
+					      		</h3>
+								<ul class = "error-list" style = "margin-left:30px;">
+									<% @user.errors.full_messages.each do |message| %>
+										<li class = "errors" style = "color:red;"><%= message %></li>
+									<% end %>
+								</ul>
+
+							</section>
+
+						<% end %>
+
+						<div class = "field" style = "margin-bottom:10px;">
+							<%= f.label :name %>
+							<%= f.text_field :name, :class => 'user_name' %>
+						</div>
+
+						<div class = "field" style = "margin-bottom:10px;">
+							<%= f.label :image %>
+							<%= f.attachment_field :profile_image %>
+						</div>
+
+						<div class = "field" style = "margin-bottom:10px;">
+							<%= f.label :introduction %>
+							<%= f.text_area :introduction, :class => 'user_introduction' %>
+						</div>
+
+						<div class = "actions">
+							<%= f.submit 'Update User', :class => 'form_button' %>
+						</div>
+
+					<% end %>
+				</div>
+
+			</section>
+
+		</div>
+
+	</div>
+
+</div>

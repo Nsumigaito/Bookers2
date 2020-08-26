@@ -1,0 +1,87 @@
+<style>
+
+	.update_btn{
+		background-color:#337ab7;
+		color:white;
+	}
+
+	.update_btn:hover{
+		background-color:#286090;
+		color:white;
+	}
+
+</style>
+
+<div class = "container" style = "padding-top:10px;">
+
+	<div class = "row">
+
+		<div class = "col-md-offset-3 col-md-6">
+
+			<section>
+
+				<h1>Editing Book</h1>
+
+			</section>
+
+		</div>
+
+		<div class = "row">
+
+			<div class = "col-md-offset-3 col-md-6" style = "padding:0;">
+
+				<div class = "index-form">
+
+					<%= form_for(@book) do |f| %>
+						<% if @book.errors.any? %>
+
+							<section class = "alert alert-warning" style = "border:none; background-color:white;">
+
+					      		<h3 class = "error-headline" style = "margin-top:0; color:red;">
+					      			<%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+					      		</h3>
+								<ul class = "error-list" style = "margin-left:30px;">
+									<% @book.errors.full_messages.each do |message| %>
+										<li class = "errors" style = "color:red;"><%= message %></li>
+									<% end %>
+								</ul>
+
+							</section>
+
+						<% end %>
+
+						<div class = "field">
+							<%= f.label :title, :style => 'display:block;' %>
+							<%= f.text_field :title, :class => 'col-xs-12',
+								:style => 'display:block; margin-bottom:10px;' %>
+						</div>
+
+						<div class = "field">
+							<%= f.label :opinion, :style => 'display:block;' %>
+							<%= f.text_area :body, :class => 'col-xs-12',
+								:style => 'display:block; margin-bottom:10px;' %>
+						</div>
+
+						<div class = "actions">
+							<%= f.submit 'Update Book', :class => 'col-xs-12 update_btn',
+								:style => 'margin-bottom:10px; padding:6px 12px; border:none; border-radius:3px;' %>
+						</div>
+
+					<% end %>
+				</div>
+
+				<div class = "col-xs-11">
+
+					<%= link_to "Show", book_path(@book.id), :style => 'color:#666;' %>
+						<span>|</span>
+					<%= link_to "Back", books_path, :style => 'color:#666;' %>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

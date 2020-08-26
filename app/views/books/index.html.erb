@@ -1,0 +1,37 @@
+<div class = "container" style = "padding-top:10px; padding-bottom:30px;">
+
+	<% if @book_new.errors.any? %>
+
+		<section class = "alert alert-warning" style = "border:none; background-color:white;">
+
+      		<h3 class = "error-headline" style = "margin-top:0; color:red;">
+      			<%= pluralize(@book_new.errors.count, "error") %> prohibited this book from being saved:
+      		</h3>
+			<ul class = "error-list" style = "margin-left:30px;">
+				<% @book_new.errors.full_messages.each do |message| %>
+					<li class = "errors" style = "color:red;"><%= message %></li>
+				<% end %>
+			</ul>
+
+		</section>
+
+	<% end %>
+
+	<div class = "row">
+
+		<div class = "col-xs-3">
+
+      		<%= render 'users/user_show', user: @user %>
+      		<%= render 'books/book_new', book: @book_new %>
+
+		</div>
+
+		<div class = "col-xs-9">
+
+			<%= render 'books/book_index', books: @books %>
+
+		</div>
+
+	</div>
+
+</div>

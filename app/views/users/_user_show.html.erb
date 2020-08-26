@@ -1,0 +1,50 @@
+<style>
+
+  .glyphicon:hover{
+    background-color:#e6e6e6;
+  }
+
+</style>
+
+<section>
+
+  <h2>User info</h2>
+
+  <div class="profile-container">
+
+    <div>
+
+      <%= attachment_image_tag user, :profile_image, format: "jpeg", size: "100x100",
+        fallback: "/no_image.jpg" %>
+
+    </div>
+
+    <table style = "width:100%; margin-bottom:30px;">
+      <thead>
+        <tr style = "border-top:1px solid #ddd;">
+          <th style = "padding:8px;">name</th>
+          <th><%= user.name %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style = "border-top:1px solid #ddd;">
+          <th style = "padding:8px;">introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
+
+<% if user == current_user %>
+
+  <div class = "actions">
+
+    <%= link_to "", edit_user_path(user.id), :class => "btn col-xs-12 glyphicon glyphicon-wrench",
+      :style => 'display:inline-block; border:1px solid #ddd; border-radius:5px; color:gray;' %>
+
+  </div>
+
+<% end %>

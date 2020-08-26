@@ -1,0 +1,60 @@
+<style>
+
+	.signup{
+		background-color:#5bc0de;
+		color:#666;
+	}
+
+	.signup:hover{
+		background-color:#31b0d5;
+		color:white;
+	}
+
+	.login{
+		background-color:#5cb85c;
+		color:#666;
+	}
+
+	.login:hover{
+		background-color:#449d44;
+		color:white;
+	}
+
+</style>
+
+<div class = "container" style = "padding-top:10px;">
+
+	<% if flash[:notice] %>
+
+	      <div class="flash" style = "color:green;">
+
+	        <%= flash[:notice] %>
+
+	      </div>
+
+	<% end %>
+
+	<div class = "row">
+
+		<div class = "col-md-offset-3 col-md-6">
+
+			<section style = "color:#222;">
+
+				<h1>welcome to <span class = "glyphicon glyphicon-book"></span>Bookers　!!</h1>
+				<p>In <span class = "glyphicon glyphicon-book"></span>
+					<span style = "font-weight:bold;">Bookers,</span>
+				</P>
+				<p>you can share and exchange your opinions , inpressions , and emotions</p>
+				<p>about various books!</p>
+				<%= link_to "Log in", new_user_session_path,:class => "btn signup",
+					:style => 'display:block; width:85%; margin:0 auto;' %>
+				<%= link_to "Sign up", new_user_registration_path,:class => "btn login",
+					:style => 'display:block; width:85%; margin:0 auto;' %>
+
+			</section>
+
+		</div>
+
+	</div>
+
+</div>

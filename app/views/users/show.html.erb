@@ -1,0 +1,30 @@
+<div class = "container" style = "padding-top:10px; padding-bottom:30px;">
+
+  <% if flash[:notice] %>
+
+    <div class="flash" style = "color:green;">
+
+      <%= flash[:notice] %>
+
+    </div>
+
+  <% end %>
+
+  <div class = "row">
+
+    <div class = "col-xs-3">
+
+      <%= render 'users/user_show', user: @user %>
+      <%= render 'books/book_new', book: @book_new %>
+
+    </div>
+
+    <div class = "col-xs-9">
+
+      <%= render 'books/book_index', books: @books %>
+
+    </div>
+
+  </div>
+
+</div>
