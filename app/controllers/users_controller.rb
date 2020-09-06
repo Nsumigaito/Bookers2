@@ -1,6 +1,30 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update]
 
+  def following
+    @title = "Follow Users"
+    @follows_table = 0
+    @user = User.find(params[:id])
+    if @user.relationships.count == 0
+      @text = "ユーザーはいません"
+      @follows_table = 1
+    end
+    @users = @user.followings.all
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Follower Users"
+    @followers_table = 0
+    @user = User.find(params[:id])
+    if @user.reverse_of_relationships.count == 0
+      @text = "ユーザーはいません"
+      @followers_table = 1
+    end
+    @users = @user.reverse_of_relationships.all
+    render 'show_follow'
+  end
+
   def index
   	@users = User.all
     @user = User.find(current_user.id)
@@ -31,15 +55,8 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
-  end
-
-  # def correct_user
-    # user = User.find(params[:id])
-    # if current_user != user
-      # redirect_to user_path(user.id)
-    # end
-  # end
+    def user_params
+    	params.require(:user).permit(:name, :introduction, :profile_image)
+    end
 
 end
