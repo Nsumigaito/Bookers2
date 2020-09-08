@@ -79,7 +79,37 @@
 
       </div>
     </header><!-- /header -->
+
+    <% if user_signed_in? %>
+    <div class = "container">
+
+      <div class = "row">
+
+        <div class = "col-md-offset-4">
+
+          <div class = "search-box" style = "padding-top:20px;">
+
+            <%= form_tag(searches_path, method: :get) do %>
+
+              <%= text_field_tag(:word) %>
+              <%= select_tag 'range', options_for_select([['User','1'],['Book','2']]) %>
+              <%= select_tag 'search', options_for_select([["完全一致","perfect_match"],["前方一致","before_match"],["後方一致","after_match"],["部分一致","pars_match"]]) %>
+              <%= submit_tag '検索' %>
+
+            <% end %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <% end %>
+
     <%= yield %>
+
     <footer>
       <div class = "container">
 

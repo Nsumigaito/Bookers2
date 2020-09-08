@@ -15,4 +15,20 @@ class Book < ApplicationRecord
 
   	end
 
+  	def self.search(search,word)
+
+  		if search == "perfect_match"
+	      	@books = Book.where("title LIKE?", "#{word}")
+	    elsif search == "before_match"
+	      	@books = Book.where("title LIKE?", "#{word}%")
+	    elsif search == "after_match"
+	     	@books = Book.where("title LIKE?", "%#{word}")
+	    elsif search == "parts_match"
+	      	@books = Book.where("title LIKE?", "%#{word}%")
+	    else
+	      	@books = Book.all
+	    end
+
+  	end
+
 end
