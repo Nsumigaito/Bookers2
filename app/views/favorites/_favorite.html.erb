@@ -1,0 +1,11 @@
+<% if bookf.favorited_by?(current_user) %>
+	<%= link_to book_favorites_path(bookf), method: :delete, remote: true do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+		<%= bookf.favorites.count %>
+	<% end %>
+<% else %>
+	<%= link_to book_favorites_path(bookf), method: :post, remote: true do %>
+		<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+		<%= bookf.favorites.count %>
+	<% end %>
+<% end %>
